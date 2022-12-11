@@ -26,19 +26,20 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
+      <li>item5</li>
     </ul>
    </div>
   </div>
 
   <script>
-     document.title="hii";
-     let mainhead=document.getElementById("main-header");
-     mainhead.style.borderBottom='2px solid #ccc';
-     let li=document.getElementsByTagName('li')
-     li[2].style.backgroundColor='green';
-  for(let i=0;i<li.length;i++){
-   li[i].style.fontWeight="bold";
-  }
+     let itembyclass=document.getElementsByClassName("list-group-item");
+     for(let i=0;i<itembyclass.length;i++){
+     itembyclass[i].style.backgroundColor="#ccc";
+     }
+     let li=document.getElementsByTagName("li");
+     for(let i=0;i<li.length;i++){
+     li[i].style.backgroundColor="green";
+     }
   </script> 
 </body>
 </html>
