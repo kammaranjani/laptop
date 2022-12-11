@@ -29,17 +29,16 @@
     </ul>
    </div>
   </div>
-<script>
-    document.title="hii";
-    var vtitle=document.getElementById("header-title");
-    console.log(vtitle.innerText);
-    console.log(vtitle.textContent);
-    vtitle.style.borderBottom='2px solid black';
-    document.all[10].textContent="hello";
-    var additems=document.getElementsByClassName("title");
-    console.log(additems);
-    additems[0].style.fontWeight="bold";
-    additems[0].style.color="green";
-</script>
+
+  <script>
+     document.title="hii";
+     let mainhead=document.getElementById("main-header");
+     mainhead.style.borderBottom='2px solid #ccc';
+     let li=document.getElementsByTagName('li')
+     li[2].style.backgroundColor='green';
+  for(let i=0;i<li.length;i++){
+   li[i].style.fontWeight="bold";
+  }
+  </script> 
 </body>
 </html>
