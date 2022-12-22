@@ -36,14 +36,14 @@
       </ul> -->
     </section>
 <script>
-        // class details{
-        //     constructor(name,email){
-        //         this.name=name;
-        //         this.email=email;
+        class details{
+            constructor(name,email){
+                this.name=name;
+                this.email=email;
         //         // this.date=date;
         //         // this.time=time;
-        //     }
-        // }
+            }
+        }
         let submit=document.getElementsByClassName('btn');
         // console.log(submit);
         submit[0].addEventListener('click',add);
@@ -52,11 +52,13 @@
            let name=document.getElementById("name");
            let email=document.getElementById("email");
         //    console.log(name.value);
-        //    let sample=new details(name.value,email.value);
-        //    console.log(sample);
-        //    localStorage.setItem("name",sample.name);
-           localStorage.setItem(name.value,email.value);
-           console.log(localStorage.getItem(name.value));
+           let sample=new details(name.value,email.value);
+           let samplejson=JSON.stringify(sample);
+           localStorage.setItem("samplejson",samplejson);
+        //    localStorage.setItem(name.value,email.value);
+        //    console.log(localStorage.getItem("samplejson"));
+           let samplede=JSON.parse(samplejson);
+           localStorage.getItem("samplede",samplede);
         }
     </script>
 </body>
