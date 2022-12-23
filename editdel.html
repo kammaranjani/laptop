@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+  <title>JS For Beginners</title>
+  <!-- CSS only -->
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-rbsA2VBKQhggwzxH7pPCaAqO46MgnOM80zW1RWuH61DGLwZJEdK2Kadq2F9CUG65" crossorigin="anonymous">
+</head>
+
+<body>
+  <header>
+    <h1>JS For Beginners</h1>
+  </header>
+
+  <section class="container">
+    <form id="my-form">
+      <h1>Add User</h1>
+      <div class="msg"></div>
+      <div>
+        <label for="name">Name:</label>
+        <input type="text" id="name">
+      </div>
+      <div>
+        <label for="email">Email:</label>
+        <input type="text" id="email">
+      </div>
+      <input class="btn btn-danger" type="submit" value="Submit">
+    </form>
+
+    <ul id="users">
+
+    </ul>
+  </section>
+  <script>
+    class details {
+      constructor(name, email) {
+        this.name = name;
+        this.email = email;
+      }
+    };
+            
+    let submit = document.getElementsByClassName('btn');
+    submit[0].addEventListener('click', add);
+    function add(e) {
+     e.preventDefault();
+     let name = document.getElementById("name");
+     let email = document.getElementById("email");
+     let sample = new details(name.value, email.value);
+     let newu = document.createElement("li");
+     let bt = document.createElement("button");
+     let edit = document.createElement("button");
+     bt.appendChild(document.createTextNode("X"));
+     edit.appendChild(document.createTextNode("Edit"));
+     bt.className = "btn btn-danger del";
+     edit.className="edit";
+     newu.appendChild(document.createTextNode(sample.name));
+     newu.appendChild(document.createTextNode(sample.email));
+     newu.appendChild(edit);
+     newu.appendChild(bt);
+     ul.appendChild(newu);
+     localStorage.setItem(sample.email, JSON.stringify(sample));
+   }
+    let ul = document.getElementById("users");
+    for (let i = 0; i < localStorage.length; i++) {
+      let det = JSON.parse(localStorage.getItem(localStorage.key(i)));
+      let newuser = document.createElement("li");
+      let bt = document.createElement("button");
+      bt.appendChild(document.createTextNode("X"));
+      bt.className = "btn btn-danger del";
+      let edit = document.createElement("button");
+      edit.className="edit";
+      edit.appendChild(document.createTextNode("Edit"));
+      newuser.appendChild(document.createTextNode(det.name));
+      newuser.appendChild(document.createTextNode(det.email));
+      newuser.appendChild(edit);
+      newuser.appendChild(bt);
+      ul.appendChild(newuser);
+    }
+    let li=document.getElementById("users");
+      li.addEventListener('click', delet);
+      li.addEventListener('click', editi);
+   function rem(email) {
+     let l = document.getElementsByTagName('ul');
+     Array.from(l).forEach(function (ele) {
+       if (ele!=null&&ele.childNodes[1].textContent == email) {
+         ul.removeChild(ele);
+       }
+     });
+   }
+   function delet(e) {
+     e.preventDefault();
+     if(e.target.classList.contains('del')){
+     let chil = e.target.parentElement;
+     let c = chil.childNodes[1].textContent;
+     localStorage.removeItem(c);
+     ul.removeChild(chil);
+     }
+   }
+   function editi(e){
+    e.preventDefault();
+    if(e.target.classList.contains('edit')){
+      let chil = e.target.parentElement;
+      let name = document.getElementById("name");
+     let email = document.getElementById("email");
+     name.value=chil.childNodes[0].textContent;
+     email.value=chil.childNodes[1].textContent;
+     ul.removeChild(chil);
+    }
+   }
+    </script>
+</body>
+</html>
