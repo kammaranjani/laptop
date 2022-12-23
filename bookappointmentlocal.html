@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta http-equiv="X-UA-Compatible" content="ie=edge" />
+    <title>JS For Beginners</title>
+    <!-- <link rel="stylesheet" href="style.css"> -->
+  </head>
+  <body>
+    <header>
+      <h1>JS For Beginners</h1>
+    </header>
+
+    <section class="container">
+      <form id="my-form">
+        <h1>Add User</h1>
+        <div class="msg"></div>
+        <div>
+          <label for="name">Name:</label>
+          <input type="text" id="name">
+        </div>
+        <div>
+          <label for="email">Email:</label>
+          <input type="text" id="email">
+        </div>
+        <input class="btn" type="submit" value="Submit">
+      </form>
+
+      <ul id="users">
+
+      </ul>
+    </section>
+<script>
+        class details{
+            constructor(name,email){
+                this.name=name;
+                this.email=email;
+            }
+        }
+        let submit=document.getElementsByClassName('btn');
+        // console.log(submit);
+        submit[0].addEventListener('click',add);
+        let ul=document.getElementById("users");
+        // let i=0;
+       let newuser=document.createElement("li");
+        function add(e){
+            e.preventDefault();
+           let name=document.getElementById("name");
+           let email=document.getElementById("email");
+           let sample=new details(name.value,email.value);
+           let newu=document.createElement("li");
+           console.log(newu);
+       //    let u=document.getElementById("items");
+          newu.appendChild(document.createTextNode(sample.name));
+          newu.appendChild(document.createTextNode(sample.email));
+          ul.appendChild(newu);  
+           localStorage.setItem(sample.email,JSON.stringify(sample));
+        }
+        for(ele in localStorage){
+            let det=JSON.parse(localStorage.getItem(ele));
+           let newuser=document.createElement("li");
+           newuser.appendChild(document.createTextNode(det.name));
+           newuser.appendChild(document.createTextNode(det.email));
+           ul.appendChild(newuser);
+    }
+// 
+
+        // }
+        // for((k,v) in localStorage){
+        // for((k,v) in localStorage){
+            // let elede=v;
+            // let newuser=document.createElement("li");
+            // newuser.appendChild(document.createTextNode(ele.second.name));
+            // newuser.appendChild(document.createTextNode(ele.second.email));
+            // ul.appendChild(newuser);
+            // console.log(v);
+        // }
+          //    let samplede=JSON.parse(samplejson);
+        //    console.log(localStorage.getItem(email.value));
+        //    localStorage.getItem("samplede",samplede);
+    </script>
+</body>
+</html>
